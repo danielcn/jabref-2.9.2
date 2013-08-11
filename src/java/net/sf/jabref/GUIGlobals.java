@@ -23,7 +23,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -310,7 +313,7 @@ public class GUIGlobals {
 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc.
 	 * @return The ImageIcon for the function.
 	 */
-	public static ImageIcon getImage(String name) {
+	public static ImageIcon getImage(String name) {	
 		URL u = getIconUrl(name);
 		return u != null ? new ImageIcon(getIconUrl(name)) : null;
 	}

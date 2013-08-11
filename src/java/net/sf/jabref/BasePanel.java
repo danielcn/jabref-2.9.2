@@ -1253,7 +1253,7 @@ public class BasePanel extends JPanel implements ClipboardOwner, FileUpdateListe
             }
         });
 
-
+        
         actions.put("openUrl", new BaseAction() {
             public void action() {
                 BibtexEntry[] bes = mainTable.getSelectedEntries();
@@ -1303,7 +1303,19 @@ public class BasePanel extends JPanel implements ClipboardOwner, FileUpdateListe
                     output(Globals.lang("No entries or multiple entries selected."));
             }
         });
-
+        
+        actions.put("openUrlAboutJabref", new BaseAction() {
+            public void action() {
+               try {
+       	         String urlJabrefWebsite = "http://jabref.sourceforge.net/";
+       	         java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlJabrefWebsite));
+       	       }
+       	       catch (java.io.IOException e) {
+       	           System.out.println(e.getMessage());
+       	       }
+            }
+        });
+        
         actions.put("openSpires", new BaseAction() {
         	public void action() {
         		BibtexEntry[] bes = mainTable.getSelectedEntries();
@@ -1633,6 +1645,7 @@ public class BasePanel extends JPanel implements ClipboardOwner, FileUpdateListe
             Util.pr("No action defined for'" + command + "'");
             else {
         Object o = actions.get(command);
+        //System.out.print(command);
         try {
             if (o instanceof BaseAction)
             ((BaseAction)o).action();
